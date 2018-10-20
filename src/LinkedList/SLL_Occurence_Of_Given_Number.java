@@ -1,6 +1,6 @@
 package LinkedList;
 import java.util.*;
-public class SLL_Find_Nth_Element {
+public class SLL_Occurence_Of_Given_Number {
 	public static SLL.Node InsertionAtLast(SLL.Node LL,int data){
 		SLL.Node NTBA=new SLL.Node(data);
 		SLL.Node temp=LL;
@@ -26,23 +26,17 @@ public class SLL_Find_Nth_Element {
 		temp.next=null;
 		return LL;
 	}
-	//Iterative Solution (1,2,3,4,5,6,7,8,9,10)
-	public static int Data_at_Index_Iterative(SLL.Node LL, int index){
+	
+	public static int occurenceOfGivenNumber(SLL.Node LL,int n){
 		int count=0;
 		SLL.Node temp=LL;
-		while(count<index){
-			count++;
+		while(temp!=null){
+			if(temp.data==n){
+				count++;
+			}
 			temp=temp.next;
 		}
-		return temp.data;
-	}
-	//Recursive Solution (1,2,3,4,5,6,7,8,9,10)
-	public static int Data_at_Index_Recursive(SLL.Node LL, int index){
-		int count=0;
-		if(count==index){
-			return LL.data;
-		}
-		return Data_at_Index_Recursive(LL.next,index-1);
+		return count;
 	}
 	public static void main(String [] args){
 		Scanner scan=new Scanner(System.in);
@@ -57,7 +51,8 @@ public class SLL_Find_Nth_Element {
 		}
 		printSLL(ll.head);
 		System.out.println();
-		System.out.println(Data_at_Index_Recursive(ll.head,5));
+		int numberToSearch=scan.nextInt();
+		System.out.println(occurenceOfGivenNumber(ll.head,numberToSearch));
 		
 	}
 }

@@ -1,6 +1,8 @@
 package LinkedList;
 import java.util.*;
-public class SLL_Find_Nth_Element {
+import java.util.Scanner;
+
+public class SLL_Find_Middle_Element {
 	public static SLL.Node InsertionAtLast(SLL.Node LL,int data){
 		SLL.Node NTBA=new SLL.Node(data);
 		SLL.Node temp=LL;
@@ -26,23 +28,21 @@ public class SLL_Find_Nth_Element {
 		temp.next=null;
 		return LL;
 	}
-	//Iterative Solution (1,2,3,4,5,6,7,8,9,10)
-	public static int Data_at_Index_Iterative(SLL.Node LL, int index){
-		int count=0;
-		SLL.Node temp=LL;
-		while(count<index){
-			count++;
-			temp=temp.next;
-		}
-		return temp.data;
+	//Using Length of LinkedList in Solution
+	public static int middleElemet_Length(SLL.Node LL,int n){
+		//We will first traverse over the list to get the length 
+		//after that we will traverse again till length/2 elements
+		return 0;
 	}
-	//Recursive Solution (1,2,3,4,5,6,7,8,9,10)
-	public static int Data_at_Index_Recursive(SLL.Node LL, int index){
-		int count=0;
-		if(count==index){
-			return LL.data;
+	//Using two pointers in Solution
+	public static int middleElemet_Two_Pointer(SLL.Node LL){
+		SLL.Node first=LL;
+		SLL.Node second=LL;
+		while(first!=null && first.next!=null){
+			first=first.next.next;
+			second=second.next;
 		}
-		return Data_at_Index_Recursive(LL.next,index-1);
+		return second.data;
 	}
 	public static void main(String [] args){
 		Scanner scan=new Scanner(System.in);
@@ -57,7 +57,7 @@ public class SLL_Find_Nth_Element {
 		}
 		printSLL(ll.head);
 		System.out.println();
-		System.out.println(Data_at_Index_Recursive(ll.head,5));
+		System.out.println(middleElemet_Two_Pointer(ll.head));
 		
 	}
 }
